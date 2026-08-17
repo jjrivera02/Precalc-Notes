@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec1-cartesian-plane" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Sets of Real Numbers and the Cartesian Coordinate Plane</title>
+
+  <p> Consider the following situation. Imagine there is a radio station at a fixed position. The radio signal from the station can be received by all cars within 10 miles of the radio station. Julian is listening to the radio station in his car, which is currently located <m>3</m> miles east and <m>2</m> miles north of the radio station. Can you imagine all of that? This entire scenario would probably be a lot easier to communicate using an illustration, and it would be nice if we established a standard way to illustrate any such situation. Hence, we have our motivation to establish the Cartesian Coordinate Plane. </p>
+
+  <p>
+    The <term>Cartesian Coordinate System</term> is a coordinate system that specifies each point uniquely in a plane by a pair of numerical coordinates. The plane below is called the <term>Cartesian Plane</term>, and we use it to describe the position of objects relative to each other and/or a fixed point called the <term>origin</term>.
+  </p>
+
+  <figure xml:id="cartesian-plane-fig">
+    <caption>The Cartesian Plane</caption>
+    <image>
+      <latex-image>
+      \begin{tikzpicture}
+        \draw[latex-latex, thin, draw=black] (-5,0)--(5,0) node [right] {<m>x</m>-axis};
+        \draw[latex-latex, thin, draw=black] (0,-5)--(0,5) node [above] {<m>y</m>-axis};
+        \node[above] at (-0.5,0) {$(0,0)$};
+        \draw [dotted, black] (-5,-5) grid (5,5);
+        \filldraw[black] (0,0) circle(3pt);
+      \end{tikzpicture}
+      </latex-image>
+    </image>
+  </figure>
+
+  <p>
+    The arrows on the axes are meant to represent the fact that the axes continue forever in the directions that they point. When drawing your own planes, it is good practice to include these arrows. On that note, it is just as important to label your axes. Traditionally, we label the horizontal axis as the <m>x</m>-axis and the vertical axis as the <m>y</m>-axis. Points on a graph have the form <m>(x,y)</m> where <m>x</m> and <m>y</m> are real numbers. The <m>x</m>-coordinate represents the horizontal distance of the point from the origin, and the <m>y</m>-coordinate represents the vertical distance of the point from the origin.
+  </p>
+
+  <worksheet xml:id="ws-test">
+    <title>test</title>
+    
+    <page>
+      <exercise workspace="1in">
+        <p>
+          this is the first problem
+        </p>
+      </exercise>
+      <exercise workspace="3in">
+        <p>
+          this is the second problem
+        </p>
+      </exercise>
+      <exercise workspace="1in">
+        <p>
+          this is the third problem
+        </p>
+      </exercise>
+    </page>
+  </worksheet>
+
+</section>
