@@ -28,11 +28,308 @@
     The arrows on the axes are meant to represent the fact that the axes continue forever in the directions that they point. When drawing your own planes, it is good practice to include these arrows. On that note, it is just as important to label your axes. Traditionally, we label the horizontal axis as the <m>x</m>-axis and the vertical axis as the <m>y</m>-axis. Points on a graph have the form <m>(x,y)</m> where <m>x</m> and <m>y</m> are real numbers. The <m>x</m>-coordinate represents the horizontal distance of the point from the origin, and the <m>y</m>-coordinate represents the vertical distance of the point from the origin.
   </p>
 
+  <p>
+    Let's now use the plane to draw a picture illustrating Julian's situation.
+  </p>
+
+  <figure xml:id="julian-fig">
+    <caption>Julian and the radio station plotted on the plane.</caption>
+    <image>
+      <latex-image>
+      \begin{tikzpicture}
+        \draw[latex-latex, thin, draw=black] (-5,0)--(5,0) node [right] {<m>x</m>-axis};
+        \draw[latex-latex, thin, draw=black] (0,-5)--(0,5) node [above] {<m>y</m>-axis};
+        \draw [dotted, black] (-5,-5) grid (5,5);
+        \filldraw[black] (0,0) circle(3pt);
+        \node[above] at (0,0) {Radio Station};
+        \filldraw[black] (3,2) circle(3pt);
+        \node[above] at (3,2) {Julian};
+      \end{tikzpicture}
+      </latex-image>
+    </image>
+  </figure>
+
+  <p>
+    Alright, now that we have seen the value of the Cartesian Plane in its ability to help us communicate, let's ask some natural (and some not so natural) questions that we can answer using math. How far is Julian from the radio station? What if Julian walked in a straight line halfway from his car to the radio station. What would be Julian's location at the halfway point? These are all questions that we can answer using the <em>distance formula</em>.
+  </p>
+
+  <definition xml:id="def-distance">
+    <statement>
+      <p>
+        The <term>distance</term> <m>d</m> between the points <m>(x_1,y_1)</m> and <m>(x_2,y_2)</m> is
+        <md number="yes" xml:id="distance-formula">
+          d=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}
+        </md>
+        Equation <xref ref="distance-formula"/> is the <term>distance formula</term>.
+      </p>
+    </statement>
+  </definition>
+
+  <insight>
+    <p>
+      Before we play with the distance formula, does it look familiar? Does it look similar to another famous theorem that you may have learned in a geometry class. Most people taking Precalculus have heard of the <em>Pythagorean Theorem</em> (if you have not, don't worry about it!), but the distance formula and the Pythagorean Theorem are actually the same statement! You're probably thinking, "What?! But the Pythagorean Theorem concerns triangles!" Well, look at the graph below to see the hidden triangle underlying the distance formula.
+    </p>
+    <figure xml:id="blue-fig">
+    <caption>Julian and the radio station plotted on the plane.</caption>
+    <image>
+      <latex-image>
+      \begin{tikzpicture}
+        \draw[latex-latex, thin, draw=black] (-5,0)--(5,0) node [right] {<m>x</m>-axis};
+        \draw[latex-latex, thin, draw=black] (0,-5)--(0,5) node [above] {<m>y</m>-axis};
+        \draw [dotted, black] (-5,-5) grid (5,5);
+        \filldraw[black] (0,0) circle(3pt);
+        \node[above] at (0,0) {Radio Station};
+        \filldraw[black] (3,2) circle(3pt);
+        \node[above] at (3,2) {Julian};
+        \draw[blue, thick] (0,0)--(3,0);
+        \draw[blue, thick] (3,0)--(3,2);
+        \draw[blue, thick] (0,0)--(3,2);
+      \end{tikzpicture}
+      </latex-image>
+    </image>
+  </figure>
+  </insight>
+
+  <p>
+    Now that we have the distance formula in our toolkit, let's make use of it.
+  </p>
+
+  <exercises>
+    <exercise>
+      <statement>
+        <p>
+          Find the distance between Julian's car and the radio station.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Since the radio station is at the point <m>(0,0)</m> and Julian's car is at the point <m>(3,2)</m>, we will apply the distance formula to find the distance, <m>d</m>, between those two points:
+          <md>
+            <mrow>d \amp =\sqrt{(3-0)^2+(2-0)^2}</mrow>
+            <mrow> \amp =\sqrt{3^2+2^2}</mrow>
+            <mrow> \amp =\sqrt{9+4}</mrow>
+            <mrow> \amp =\sqrt{13}</mrow>,
+          </md>
+          so Julian's car is <m>\sqrt{13}</m> miles away from the radio station.
+        </p>
+      </solution>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          How much farther north can Julian travel before he is no longer in range to receive the radio signal?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We know that the radio signal can be received up to 10 miles away. Assuming Julian's car remains 3 miles east, we first want to know how far North Julian can travel before losing the radio signal. We can call this farthest point $(x,3)$, where $(x,3)$ is 10 miles away from the point $(0,0)$. By the distance formula, we have that
+          <md>
+            <mrow>10 \amp =\sqrt{(x-0)^2+(3-0)^2}</mrow>
+            <mrow> \amp =\sqrt{x^2+3^2}</mrow>
+            <mrow> \amp =\sqrt{x^2+9}.</mrow>
+          </md>
+          Squaring both sides of what we have above, we get <m>100=x^2+9</m>. Thus, <m>91=x^2</m>, so <m>x=\pm\sqrt{91}</m>. Since distance is a positive number, we take <m>x=\sqrt{91}</m>. Since Julian is already 2 miles north, he can travel an additional <m>\sqrt{91}-2</m> miles north before losing the radio signal.
+        </p>
+      </solution>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Suppose the signal is only strong within <m>4</m> miles of the station. Find an equation that represents all points <m>(x,y)</m> that are exactly <m>4</m> miles away from the radio station.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We want to find all points <m>(x,y)</m> that are exactly <m>4</m> miles away from the radio station at <m>(0,0)</m>. Using the distance formula, we have:
+          <md>
+            <mrow>4 \amp =\sqrt{(x-0)^2+(y-0)^2}</mrow>
+            <mrow> \amp =\sqrt{x^2+y^2}.</mrow>
+          </md>
+          Squaring both sides of what we have above, we get <m>16=x^2+y^2</m>.
+        </p>
+      </solution>
+    </exercise>
+  </exercises>
+
+  <p>
+    If you decided to draw a picture of the points that are exactly 4 miles away from the radio station, you may have noticed that they form a circle with radius 4 centered at the origin. Let's now define circles in more general terms.
+  </p>
+  
+  <definition xml:id="def-circles">
+    <statement>
+      <p>
+        A <term>circle</term> is the set of all points <m>(x,y)</m> that are a fixed distance, <m>r</m> (the radius), from its center, <m>(h,k)</m>. The standard equation of a circle with radius <m>r</m> and center <m>(h,k)</m> is
+        <md>
+          <mrow>(x-h)^2+(y-k)^2 \amp =r^2.</mrow>
+        </md>
+      </p>
+    </statement>
+  </definition>
+
+  <p>
+    By definition, a circle is the set of all points that are a fixed distance from a center point, and we can use the distance formula to derive the standard equation of a circle. If we let <m>(x,y)</m> be a point on the circle, then the distance from <m>(x,y)</m> to the center of the circle, <m>(h,k)</m>, is equal to the radius, <m>r</m>. Thus, by the distance formula, we have
+    <md>
+      <mrow>\sqrt{(x-h)^2+(y-k)^2} \amp =r</mrow>
+    </md>
+    Squaring both sides, we get the standard equation of a circle:
+    <md>
+      <mrow>(x-h)^2+(y-k)^2 \amp =r^2.</mrow>
+    </md>
+  </p>
+
+  <p>
+    Let's ask another question about Julian. Suppose Julian walks from his car to the radio station on a straight (direct) path. What is his location when he is halfway to the station? Since the station is at the point <m>(0,0)</m> and Julian's car is at the point <m>(3,2)</m>, you may have thought that the halfway point is <m>(\frac{3}{2}, 1)</m>, but let's introduce a formula to help us calculate the midpoint between any two points.
+  </p>
+
+  <definition xml:id="def-midpoint-formula">
+    <statement>
+      <p>
+        The <term>midpoint</term> <m>M</m> of the line segment connecting the points <m>(x_1,y_1)</m> and <m>(x_2,y_2)</m> is
+        <md>
+          <mrow>M \amp =\left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right).</mrow>
+        </md>
+      </p>
+    </statement>
+  </definition>
+
+  <example>
+    <p>
+      Let's do an example using the midpoint formula. Find the midpoint of the line segment connecting the points <m>(-2,3)</m> and <m>(4,-1)</m>:
+      <md>
+        <mrow>M \amp =\left(\frac{4-(-2)}{2},\frac{-1-3}{2}\right)</mrow>
+        <mrow> \amp =\left(\frac{6}{2},\frac{-4}{2}\right)</mrow>
+        <mrow> \amp =\left(3,-2\right).</mrow>
+      </md>
+    </p>
+  </example>
+
+  <exercises>
+    <exercise>
+      <statement>
+        <p>
+          Determine the quadrant in which each of the following points lie:
+          <ol>
+            <li>
+              <p>
+                <m>(-5,2)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(3,-1)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol>
+            <li>
+              <p>
+                The point <m>(-5,2)</m> lies in Quadrant II because the <m>x</m>-coordinate is negative and the <m>y</m>-coordinate is positive.
+              </p>
+            </li>
+            <li>
+              <p>
+                The point <m>(3,-1)</m> lies in Quadrant IV because the <m>x</m>-coordinate is positive and the <m>y</m>-coordinate is negative.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          The Ship Wreck is located at position <m>(0,0)</m>. It sends out a sonar pulse and detects two ships. The first ship, Ship A, is located 3 miles south and 2 miles east of the Ship Wreck. The second ship, Ship B, is located 2 miles south and 4 miles west of the Ship Wreck.
+          <ol>
+            <li>
+              <p>
+                Draw a diagram of the situation on the Cartesian Plane.
+              </p>
+            </li>
+            <li>
+              <p>
+                Are the two ships closer to each other or farther apart than they are from the Ship Wreck? Use the distance formula to justify your answer.
+              </p>
+            </li>
+            <li>
+              <p>
+                Ship A and Ship B need to meet up to combine resources in their rescue of the Ship Wreck. Find the midpoint of the line segment connecting Ship A and Ship B. This is the location where they should meet.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol>
+            <li>
+              <figure xml:id="ships-fig">
+              <caption>The ships and the ship wreck plotted on the plane.</caption>
+              <image>
+                <latex-image>
+                \begin{tikzpicture}
+                  \draw[latex-latex, thin, draw=black] (-5,0)--(5,0) node [right] {East};
+                  \draw[latex-latex, thin, draw=black] (0,-5)--(0,5) node [above] {North};
+                  \draw [dotted, black] (-5,-5) grid (5,5);
+                  \node[blue] at (0,0) {$\bullet$};
+                  \node[blue, above] at (0,0) {Ship Wreck};
+                  \node[blue] at (2,-3) {$\bullet$};
+                  \node[blue, above] at (2,-3) {Ship A};
+                  \node[blue] at (-4,-2) {$\bullet$};
+                  \node[blue, above] at (-4,-2) {Ship B};
+                \end{tikzpicture}
+                </latex-image>
+              </image>
+              </figure>
+            </li>
+            <li>
+              <p>
+                The distance between Ship A and the Ship Wreck is
+                <md>
+                  <mrow>\sqrt{(2-0)^2+(-3-0)^2} \amp=\sqrt{2^2+(-3)^2} </mrow>
+                  <mrow> \amp =\sqrt{4+9} </mrow>
+                  <mrow> \amp =\sqrt{13}\text{ miles}, </mrow>
+                </md>
+                the distance between Ship B and the Ship Wreck is
+                <md>
+                  <mrow>\sqrt{(-4-0)^2+(-2-0)^2} \amp=\sqrt{(-4)^2+(-2)^2} </mrow>
+                  <mrow> \amp =\sqrt{16+4} </mrow>
+                  <mrow> \amp =\sqrt{20}\text{ miles}, </mrow>
+                </md>
+                and the distance between Ship A and Ship B is
+                <md>
+                  <mrow>\sqrt{(2-(-4))^2+(-3-(-2))^2} \amp=\sqrt{(6)^2+(-1)^2} </mrow>
+                  <mrow> \amp =\sqrt{36+1} </mrow>
+                  <mrow> \amp =\sqrt{37}\text{ miles}. </mrow>
+                </md>
+                Since <m>\sqrt{37}>\sqrt{20}>\sqrt{13}</m>, the two ships are farther apart than they are from the Ship Wreck.
+              </p>
+            </li>
+            <li>
+              <p>
+                The midpoint of the line segment connecting Ship A and Ship B is
+                <md>
+                  <mrow>M \amp =\left(\frac{2+(-4)}{2},\frac{-3+(-2)}{2}\right)</mrow>
+                  <mrow> \amp =\left(\frac{-2}{2},\frac{-5}{2}\right)</mrow>
+                  <mrow> \amp =\left(-1,-\frac{5}{2}\right). </mrow>
+                </md>
+                Thus, the two ships should meet at the point <m>(-1,-\frac{5}{2})</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+  </exercises>
+
   <worksheet xml:id="ws-test">
     <title>test</title>
     
     <page>
-      <exercise workspace="1in">
+      <exercise workspace="2in">
         <p>
           this is the first problem
         </p>
