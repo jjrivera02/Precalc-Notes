@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec2-functions-and-relations">
+    <title>Functions and Relations</title>
+
+    <definition xml:id="def-relation">
+        <statement>
+            <p>
+                A set of ordered pairs <m>(x,y)</m> is called a <term>relation</term> in <m>x</m> and <m>y</m>.
+                <ul>
+                    <li>
+                        <p>
+                            The set of <m>x</m>-values in the ordered pairs is called the <m>domain</m> (or set of inputs) of the relation.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            The set of <m>y</m>-values in the ordered pairs is called the <term>range</term> ( or set of outputs) of the relation. 
+                        </p>
+                    </li>
+                </ul>
+            </p>
+        </statement>
+    </definition>
+
+    <note>
+        <p>Even when two or more ordered pairs have the same input, we only list that input once in the domain.</p> 
+    </note>
+
+    <example>
+        <p>
+            Consider the graph of <m>(x+1)^2+(y-2)^2=9</m>. What is the domain and range of this relation? Well, notice that this is the graph of a circle centered at <m>(-1,2)</m> with radius <m>3</m>. The domain is the set of all <m>x</m>-values in the points along this circle, which is just the interval <m>[-4,2]</m>, and the range is the set of all <m>y</m>-values in the points along this circle, which is the interval <m>[-1,5]</m>.
+        </p>
+    </example>
+
+    <p>
+        What happens when we substitute <m>x=-1</m> into the graph of the preceding circle? Well, we can do the math and find out:
+        <md>
+            <mrow>(-1+1)^2+(y-2)^2 \amp =9</mrow>
+            <mrow>0^2+(y-2)^2 \amp =9</mrow>
+            <mrow>(y-2)^2 \amp =9</mrow>
+            <mrow>y-2 \amp =\pm\sqrt{9}</mrow>
+            <mrow>y-2 \amp =\pm3,</mrow>
+        </md>
+        so <m>y-2=3</m>, or <m>y-2=-3</m>, implying that <m>y=5</m>, or <m>y=-3</m>. What we have just observed is an example of a relation where one input, <m>x=-1</m>, corresponds to two distinct outputs, namely <m>y=5</m> and <m>y=-1</m>. We want to characterize those relations where every input corresponds to at most one output.
+    </p>
+
+    <definition xml:id="def-function">
+        <statement>
+            <p>
+                A <term>function</term> <m>f</m> from a set <m>A</m> to a set <m>B</m> is a relation that assigns each element <m>x</m> in the set <m>A</m> to exactly one element <m>y</m> in the set <m>B</m>.
+            </p>
+
+            <p>
+                The set <m>A</m> is the <term>domain</term> of the function <m>f</m>, and the set <m>B</m> contains the <term>range</term>.
+            </p>
+        </statement>
+    </definition>
+
+    <p>
+        Notice that by definition, a function is a relation; it is just a very special type of relation that assigns each input to exactly one output.
+    </p>
+
+    
+</section>
