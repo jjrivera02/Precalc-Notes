@@ -11,4 +11,5 @@
 
   <!-- include sections -->
 ` <xi:include href="sec1-cartesian-plane.ptx"/>
+  <xi:include href="sec2-functions-and-relations.ptx"/>
 </chapter>

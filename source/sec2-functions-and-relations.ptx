@@ -10,7 +10,7 @@
                 <ul>
                     <li>
                         <p>
-                            The set of <m>x</m>-values in the ordered pairs is called the <m>domain</m> (or set of inputs) of the relation.
+                            The set of <m>x</m>-values in the ordered pairs is called the <term>domain</term> (or set of inputs) of the relation.
                         </p>
                     </li>
                     <li>
@@ -27,14 +27,26 @@
         <p>Even when two or more ordered pairs have the same input, we only list that input once in the domain.</p> 
     </note>
 
-    <example>
-        <p>
-            Consider the graph of <m>(x+1)^2+(y-2)^2=9</m>. What is the domain and range of this relation? Well, notice that this is the graph of a circle centered at <m>(-1,2)</m> with radius <m>3</m>. The domain is the set of all <m>x</m>-values in the points along this circle, which is just the interval <m>[-4,2]</m>, and the range is the set of all <m>y</m>-values in the points along this circle, which is the interval <m>[-1,5]</m>.
-        </p>
+    <example xml:id="ex-circle-DR">
+        <statement>
+            <p>
+                Consider the graph of <m>(x+1)^2+(y-2)^2=9</m>. What is the domain and range of this relation?
+            </p>
+        </statement>
+        <answer>
+            <p>
+                The domain is <m>[-4,2]</m>, and the range is <m>[-1,5]</m>.
+            </p>
+        </answer>
+        <solution>
+            <p>
+                The equation we are given is one of a circle centered at the point <m>(-1,2)</m> with radius <m>3</m>. The domain is the set of all <m>x</m>-values in the points along this circle, and we can get an interval for all of those values by subtracting and adding the radius to the <m>x</m>-coordinate of the center. This is how we get the domain <m>[-4,2]</m>. Similarly, since the range is the set of all <m>y</m>-values in the points along this circle, we can get the range by subtracting and adding the radius to the <m>y</m>-coordinate of the center. This is how we get the range <m>[-1,5]</m>.
+            </p>
+        </solution>
     </example>
 
     <p>
-        What happens when we substitute <m>x=-1</m> into the graph of the preceding circle? Well, we can do the math and find out:
+        What happens when we substitute <m>x=-1</m> into the graph of the circle in <xref ref="ex-circle-DR"/>? Well, we can do the math and find out:
         <md>
             <mrow>(-1+1)^2+(y-2)^2 \amp =9</mrow>
             <mrow>0^2+(y-2)^2 \amp =9</mrow>
@@ -61,5 +73,631 @@
         Notice that by definition, a function is a relation; it is just a very special type of relation that assigns each input to exactly one output.
     </p>
 
+    <p>
+        Now that we know about functions, we want to develop some tricks to be able to look at a relation and easily determine if that relation is a function or not. To that end, we have the vertical line test:
+    </p>
+
+    <theorem xml:id="thm-vertical-line-test">
+        <title>Vertical Line Test</title>
+        <statement>
+            <p>
+                A set of points in a coordinate plane is the graph of <m>y</m> as a function of <m>x</m> if and only if no vertical line intersects the graph in more than one point.
+            </p>
+        </statement>
+    </theorem>
     
+    <example>
+        <statement>
+            <p>
+                Use the vertical line test to determine which of the follow graphs represent <m>y</m> as a function of <m>x</m>.
+            </p>
+            <sidebyside widths = "50% 50%">
+                <figure>
+                  <caption>Graph 1.</caption>
+                  <image>
+                    <latex-image>
+                    \begin{tikzpicture}
+                        \draw[step=.5cm, lightgray, very thin] (-1.2,0) grid (4.2,5.2);
+                        \draw[darkgray,ultra thick, ->] (-1.2,0) -- (4.3,0) coordinate (x axis);
+                        \draw[darkgray,ultra thick, ->] (0,0) -- (0,5.3) coordinate (y axis);
+                        \foreach \x/\xtext in { -1, 0, 1, 2, 3, 4} 
+                            \draw[thick] (\x cm,2pt) -- (\x cm,-2pt) node[rectangle,fill=white,text=black,anchor=north] {$\xtext$};
+                        \foreach \y/\ytext in {1,2,3,4,5} 
+                            \draw[thick] (2pt,\y cm) -- (-2pt,\y cm) node[rectangle,fill=white,text=black,anchor=east] {$\ytext$};
+                        \draw[domain=-1:1, smooth, variable=\x, black,ultra thick,] plot ({\x}, {0.5+(\x - 1)^2});
+                        \draw[black,ultra thick,->] (1,2) -- (2,1) -- (4,2);	 
+                        \draw[black,very thick,fill=white] (1,0.5) circle (0.08cm);
+                        \draw[black,fill=black] (1,2) circle (0.08cm);
+                        \node at (4.4, 0.2) {$x$};
+                        \node at (.4, 5.4) {$y$};
+                    \end{tikzpicture}
+                    </latex-image>
+                    </image>
+                </figure>
+
+                <figure>
+                  <caption>Graph 2.</caption>
+                  <image>
+                    <latex-image>
+                    \begin{tikzpicture}
+                        \draw[step=.5cm, lightgray, very thin] (-1.2,-2.2) grid (4.2,2.2);
+                        \draw[ultra thick, ->] (-1, 0) -- (4.2, 0) node[right] {$x$};
+                        \draw[ultra thick, ->] (0, -2) -- (0, 2.2) node[above] {$y$};
+                        \foreach \x/\xtext in { 0, 1, 2, 3, 4} 
+                            \draw[thick] (\x cm,2pt) -- (\x cm,-2pt) node[rectangle,fill=white,text=black,anchor=north] {$\xtext$};
+                        \foreach \y/\ytext in {-2,-1,1,2} 
+                            \draw[thick] (2pt,\y cm) -- (-2pt,\y cm) node[rectangle,fill=white,text=black,anchor=east] {$\ytext$};
+                        \draw[scale=0.5, domain=-3:3, smooth, ultra thick, variable=\y, black]  plot ({\y*\y}, {\y});
+                    \end{tikzpicture}
+                    </latex-image>
+                    </image>
+                </figure>
+            </sidebyside>
+        </statement>
+        <answer>
+            <p>
+                The first graph <em>does</em> represent <m>y</m> as a function of <m>x</m>, but the second graph <em>does not</em>.
+            </p>
+        </answer>
+        <solution>
+            <sidebyside widths = "50% 50%">
+                <figure>
+                  <caption>Graph 1.</caption>
+                  <image>
+                    <latex-image>
+                    \begin{tikzpicture}
+                        \draw[step=.5cm, lightgray, very thin] (-1.2,0) grid (4.2,5.2);
+                        \draw[darkgray,ultra thick, ->] (-1.2,0) -- (4.3,0) coordinate (x axis);
+                        \draw[darkgray,ultra thick, ->] (0,0) -- (0,5.3) coordinate (y axis);
+                        \foreach \x/\xtext in { -1, 0, 1, 2, 3, 4} 
+                            \draw[thick] (\x cm,2pt) -- (\x cm,-2pt) node[rectangle,fill=white,text=black,anchor=north] {$\xtext$};
+                        \foreach \y/\ytext in {1,2,3,4,5} 
+                            \draw[thick] (2pt,\y cm) -- (-2pt,\y cm) node[rectangle,fill=white,text=black,anchor=east] {$\ytext$};
+                        \draw[domain=-1:1, smooth, variable=\x, black,ultra thick,] plot ({\x}, {0.5+(\x - 1)^2});
+                        \draw[black,ultra thick,->] (1,2) -- (2,1) -- (4,2);	 
+                        \draw[black,very thick,fill=white] (1,0.5) circle (0.08cm);
+                        \draw[black,fill=black] (1,2) circle (0.08cm);
+                        \node at (4.4, 0.2) {$x$};
+                        \node at (.4, 5.4) {$y$};
+                        \draw[red, ultra thick] (1,0) -- (1,5.2);
+                    \end{tikzpicture}
+                    </latex-image>
+                    </image>
+                </figure>
+
+                <figure>
+                  <caption>Graph 2.</caption>
+                  <image>
+                    <latex-image>
+                    \begin{tikzpicture}
+                        \draw[step=.5cm, lightgray, very thin] (-1.2,-2.2) grid (4.2,2.2);
+                        \draw[ultra thick, ->] (-1, 0) -- (4.2, 0) node[right] {$x$};
+                        \draw[ultra thick, ->] (0, -2) -- (0, 2.2) node[above] {$y$};
+                        \foreach \x/\xtext in { 0, 1, 2, 3, 4} 
+                            \draw[thick] (\x cm,2pt) -- (\x cm,-2pt) node[rectangle,fill=white,text=black,anchor=north] {$\xtext$};
+                        \foreach \y/\ytext in {-2,-1,1,2} 
+                            \draw[thick] (2pt,\y cm) -- (-2pt,\y cm) node[rectangle,fill=white,text=black,anchor=east] {$\ytext$};
+                        \draw[scale=0.5, domain=-3:3, smooth, ultra thick, variable=\y, black]  plot ({\y*\y}, {\y});
+                        \draw[red, ultra thick] (1,-2.2) -- (1,2.2);
+                    \end{tikzpicture}
+                    </latex-image>
+                    </image>
+                </figure>
+            </sidebyside>
+            <p>
+                Through the graphs above, I have drawn a single vertical line. In Graph 2, because I was able to draw a vertical line through the graph such that the line intersects <em>multiple</em> points on the graph, the vertical line test tells us that Graph 2 does not represent <m>y</m> as a function of <m>x</m>.
+            </p>
+            <p>
+                Turning our attention to Graph 1, it is impossible to draw a vertical line such that the line intersects the graph at multiple points. I imagine that the one place where people may believe that a vertical intersects the graph at multiple points is exactly where I have drawn the red line above. However, the open hole at <m>x=1</m> visually indicates that there is not actually a point on the graph there, whereas the filled-in hole at <m>x=1</m> visually indicates that there <em>is</em> is a point on the graph there. Hence, the red vertical line in Graph 1 only intersects one point, as would any other vertical line, so Graph 1 <em>does</em> represent <m>y</m> as a function of <m>x</m>
+            </p>
+        </solution>
+    </example>
+
+    <example>
+        <statement>
+            <p>
+                Determine which of the following equations represent <m>y</m> as a function of <m>x</m>.
+            </p>
+            <p>
+                <ol marker="a">
+                    <li>
+                        <p>
+                            <m>x^2+y^2=4</m>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>y-4x^2=36</m>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>y=\sqrt{16-x^2}</m>
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </statement>
+        <solution>
+            <p>
+                <ol marker="a">
+                    <li>
+                        <p>
+                            This is the equation of a circle centered at the point <m>(0,0)</m> with radius <m>2</m>. Circles fail the vertical line test, so this equation does not represent <m>y</m> as a function of <m>x</m>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            This equation does represent <m>y</m> as a function of <m>x</m>! We do not currently know how to graph this function (we will learn soon), but we can still check that each input corresponds to exactly one output. Indeed, substitute any number you would like for <m>x</m>, and you will see that you get exactly one value for <m>y</m> back! This is an algebraic way to check that a relation is a function.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            This equation also represents <m>y</m> as a function of <m>x</m>, and we can check this in the same way that we did for the previous equation! Each value of <m>x</m> corresponds to exactly one value of <m>y</m>! Fun fact: this is actually the equation of a semi-circle, which does pass the vertical line test!
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </solution>
+    </example>
+    
+    <p>
+        Now that we have defined functions and practiced identifying functions, let's make sure that we can communicate function notation correctly. Often, you will encounter the following notation for functions:
+        <md>
+            <mrow>f:A\to B, </mrow>
+        </md>
+        and
+        <md>
+            <mrow> f(x). </mrow>
+        </md>
+        The first line of notation, <m>f:A\to B</m>, often read as <q><m>f</m> maps <m>A</m> to <m>B</m></q>, specifies a function, <m>f</m>, the domain of the function, <m>A</m>, and the range of the function, <m>B</m>. We won't use this notation often in this class, but it will come up every now and then, and it will definitely arise in future math classes, so it is good to understand now. The second line of notation, <m>f(x)</m>, is read as <q><m>f</m> of <m>x</m></q>, and it indicates the value that you want to substitute into your function. Specifically, it does not mean multiply <m>f</m> by <m>x</m>. This notation will now be adopted for the rest of the course, so let's do an example to make sure that we are comfortable evaluating functions.
+    </p>
+
+    <example>
+        <statement>
+            <p>
+                Evaluate the function
+                <md>
+                    <mrow> f(x)=\sqrt{x^2+2x+1} +\frac{1}{x}+3 </mrow>
+                </md>
+                at the given values of <m>x</m>.
+            </p>
+            <p>
+                <ol marker="a">
+                    <li>
+                        <p>
+                            <m>f(2)</m>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>f(\heartsuit)</m>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>f(s^2)</m>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>f(x+h)</m>
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </statement>
+        <solution>
+            <p>
+                <ol marker="a">
+                    <li>
+                        <p>
+                            The notation <m>f(2)</m> simply tells us to take the function <m>f</m> and substitute <m>2</m> for <m>x</m> anywhere there is an <m>x</m> in the function <m>f</m>:
+                            <md>
+                                <mrow>f(2) \amp =\sqrt{2^2+2(2)+1}+\frac{1}{2}+3</mrow>
+                                <mrow> \amp =\sqrt{4+4+1}+\frac{7}{2}</mrow>
+                                <mrow> \amp =\sqrt{9}+\frac{7}{2}</mrow>
+                                <mrow> \amp =3+\frac{7}{2}</mrow>
+                                <mrow> \amp =\frac{13}{2}.</mrow>
+                            </md>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            That's right, we can plug <m>\heartsuit</m>s into functions:
+                            <md>
+                                <mrow>f(\heartsuit) \amp =\sqrt{\heartsuit^2+2\heartsuit+1}+\frac{1}{\heartsuit}+3</mrow>
+                                <mrow> \amp =\sqrt{(\heartsuit+1)^2}+\frac{1}{\heartsuit}+3</mrow>
+                                <mrow> \amp =\heartsuit+1+\frac{1}{\heartsuit}+3</mrow>
+                                <mrow> \amp =\heartsuit+\frac{1}{\heartsuit}+4,</mrow>
+                            </md>
+                            and we do not need to simplify that any further.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Yes! We can plug letters into functions as well!
+                            <md>
+                                <mrow>f(s^2) \amp =\sqrt{(s^2)^2+2(s^2)+1}+\frac{1}{s^2}+3</mrow>
+                                <mrow> \amp =\sqrt{(s^2+1)^2}+\frac{1}{s^2}+3</mrow>
+                                <mrow> \amp =s^2+1+\frac{1}{s^2}+3</mrow>
+                                <mrow> \amp =s^2+\frac{1}{s^2}+4,</mrow>
+                            </md>
+                            and we do not need to simplify that any further.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            This is a <em>very</em> special example. Eventually, we will learn about something called the difference quotient, and the difference quotient will show up again and again when you take calculus. Often, students struggle with this function evaluation. Thus, if we can figure it out now, we will be in a great position in our future math classes!
+                            <md>
+                                <mrow>f(x+h) \amp =\sqrt{(x+h)^2+2(x+h)+1}+\frac{1}{x+h}+3</mrow>
+                                <mrow> \amp =\sqrt{((x+h)+1)^2}+\frac{1+3x+3h}{x+h}</mrow>
+                                <mrow> \amp =x+h+1+\frac{1+3x+3h}{x+h}</mrow>
+                                <mrow> \amp =\frac{x^2+2xh+h^2+x+h+1+3x+3h}{x+h}</mrow>
+                                <mrow> \amp =\frac{x^2+2xh+4x+h^2+4h+1}{x+h}.</mrow>
+                            </md>
+                            Notice that I simplified this example much more than the previous two examples. In calculus, not only will you have to evaluate <m>f(x+h)</m>, but also you will have to be able to simplify expressions in <m>x</m> and <m>h</m> as I have done. If you trust the experienced math student in me, I promise that your life in calculus will be much easier if you develop these skills now.
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </solution>
+    </example>
+
+    <p>
+        Let's look at an example of a <term>piecewise</term> defined function. Piecewise functions are defined based on different values of <m>x</m>. Their name comes from the fact that the domain of the function is split into different pieces.
+    </p>
+
+    <example>
+        <statement>
+            <p>
+                Let
+                <md>
+                    <mrow>g(x) \amp =\begin{cases}x+1 &amp; -5\le x\le 0 \\ 17 &amp; x=0 \\ (x+3)^2-1 &amp; x\ge 0\end{cases}.</mrow>
+                </md>
+                Find each function value, if possible.
+            </p>
+            <p>
+                <ol>
+                    <li>
+                        <p>
+                            <m>g(-4)</m> 
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>g(0)</m>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>g(1)</m>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>g(-7)</m>
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </statement>
+
+        <solution>
+            <p>
+                <ol>
+                    <li>
+                        <p>
+                            To evaluate piecewise functions, we first need to understand how to read them. Our piecewise function says <m>g(x)=x+1</m> when <m>-5\le x\le 0</m>, <m>g(x)=17</m> when <m>x=0</m>, and <m>g(x)=(x+3)^2-1</m> when <m>x\ge 0</m>. Thus, since <m>-5\le -4\le 0</m>,
+                            <md>
+                                <mrow> g(-4)=-4+1=-3. </mrow>
+                            </md>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            In this case, <m>x=0</m>, so <m>g(0)=17</m>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Since <m>x=1</m>, and <m>1\ge0</m>, 
+                            <md>
+                                <mrow>g(1)=(1+3)^2-1=4^2-1=16-1=15. </mrow>
+                            </md>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Here we have <m>x=-7</m>, but if you notice, our function simply is not defined for <m>x=-7</m>, so we just say <m>g(-7)</m> is not defined.
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </solution>
+    </example>
+
+    <p>
+        Alright, now that we have some experience playing around with functions, let's talk about graphing functions!
+    </p>
+
+    <definition xml:id="def-graph">
+        <statement>
+            <p>
+                The <term>graph</term> of a function <m>f</m> is the collection of ordered pairs <m>(x,f(x))</m> such that <m>x</m> is in the domain of <m>f</m>. Let's note two key observations which will make communicating and interpreting information about a graph easier:
+                <ul>
+                    <li>
+                        <p>
+                            <m>x</m> is the distance from the <m>y</m>-axis, and
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>y=f(x)</m> is the distance from the <m>x</m>-axis.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <p>
+                The <term>domain</term> of a function is the set of all real numbers for which the expression is defined.
+            </p>
+        </statement>
+    </definition>
+
+    <p>
+        Given a graph of a function, <m>f</m>, we want to be able to identify the domain and range of that function easily, so how do we do this? By definition, the graph depicts <em>every</em> point <m>(x,f(x))</m> such that <m>x</m> is in the domain of <m>f</m>, so if we want to know the domain of <m>f</m>, we should look at the graph from left to right and identify every value of <m>x</m> for which there is some point <m>(x,f(x))</m> on the graph. Similarly, if we want to know the range, we should look at the graph from bottom to top and identify every value of <m>y</m> for which there is some point <m>(x,y)</m> on the graph. Let's look at an example.
+    </p>
+
+    <example>
+        <statement>
+            <p>
+                Find the domain of the following function.
+            </p>
+            <figure>
+                <image>
+                    <latex-image>
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                width=11cm,
+                                height=11cm,
+                                xtick={-10,-8,-6,...,8},
+                                ytick={-8,-6,...,8},
+                                minor x tick num=1,
+                                minor y tick num=1,
+                                tick label style={font=\footnotesize},
+                                xmin=-10, xmax=8,
+                                ymin=-6, ymax=8,
+                                axis x line=center,
+                                axis y line=center,
+                                axis line style={black, thick},
+                                grid style={gray,thick},
+                                grid=both,
+                                disabledatascaling
+                            ]
+
+                                \addplot[
+                                    black,
+                                    domain=-10:-5,
+                                    ultra thick,
+                                    samples=101,
+                                    latex-
+                                ] {
+                                    -6/pi*rad(atan((x+5)^5))
+                                };
+
+                                \draw[ultra thick,black] (-2,2) -- (1,2);
+
+                                \addplot[
+                                    black,
+                                    domain=-5:-2.2375,
+                                    ultra thick,
+                                    samples=101,
+                                    -latex
+                                ] {
+                                    tan(deg(pi*(x-1)/6))
+                                };
+
+                                \draw[black,ultra thick,fill=black]
+                                    (-2,2) circle[radius=2.5pt];
+
+                                \draw[black,ultra thick,fill=white]
+                                    (1,2) circle[radius=2.5pt];
+
+                                \draw[ultra thick,black] (1,-5) -- (4,-2);
+
+                                \addplot[
+                                    black,
+                                    domain=4:8,
+                                    ultra thick,
+                                    samples=101,
+                                    -latex
+                                ] {
+                                    -(3/4)*(x-6)^2+1
+                                };
+
+                                \draw[black,ultra thick,fill=black]
+                                    (1,-5) circle[radius=2.5pt];
+
+                                \draw[black,ultra thick,fill=white]
+                                    (4,-2) circle[radius=2.5pt];
+
+                                \draw[black,ultra thick,fill=black]
+                                    (4,1) circle[radius=2.5pt];
+
+                            \end{axis}
+                        \end{tikzpicture}
+                    </latex-image>
+                </image>
+            </figure>
+        </statement>
+
+        <solution>
+            <p>
+                To determine the domain by looking at the graph, we will read the graph from left to right and look out for any holes or values of <m>x</m> for which there is not a point <m>(x,f(x))</m> on the graph. In this example, the domain is <m>(-\infty,\infty)</m>.
+            </p>
+        </solution>
+    </example>
+
+    <p>
+        As mentioned earlier, some standard notation for functions includes <m>f:A\to B</m>; however, in practice, we mostly see functions written like <m>f(x)=\sqrt{x}</m>, where neither the domain nor the range is explicitly stated. In this case, how do we determine the domain? The answer to this question is <q>all values of <m>x</m> such that <m>f(x)</m> is defined,</q> however, it can often be easier to think about for which values of <m>x</m> the function is <em>not</em> defined. Let's look at some examples.
+    </p>
+
+    <example>
+        <statement>
+            <p>
+                Find the domain of the following functions:
+                <ol>
+                    <li>
+                        <p>
+                            <m>y=4x^2+1</m>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>g(x)=\frac{x^2+2x+1}{x^2-1}</m>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>h(x)=\sqrt{4-x^2}</m>
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </statement>
+        <solution>
+            <p>
+                <ol>
+                    <li>
+                        <p>
+                            The domain is <m>(-\infty,\infty)</m>. This is because the function <m>y=4x^2+1</m> is defined for any value of <m>x</m>!
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            The domain is <m>(-\infty,-1)\cup(-1,1)\cup(1,\infty)</m>. Why is this the answer? Well, it can be kind of hard to know where exactly the function <m>g(x)=\frac{x^2+2x+1}{x^2-1}</m> is defined, but it is a lot easier to know where it is undefined. Why? The function <m>g</m> is a fraction, and with fractions, we know that we cannot divide by <m>0</m>. Therefore, we would not want <m>x^2-1</m> to be zero. Written in symbols, <m>x^2-1\neq0</m>, and that is the only condition that <m>g</m> must satisfy. If we solve this equation, we get
+                            <md>
+                                <mrow>x^2-1 \amp \neq0</mrow>
+                                <mrow>x^2 \amp \neq1</mrow>
+                                <mrow>x \amp \neq\pm\sqrt{1}</mrow>
+                                <mrow>x \amp \neq\pm1.</mrow>
+                            </md>
+                            Therefore, the domain is everything, except for the numbers <m>\pm1</m>. Written in interval notation, the domain is <m>(-\infty,-1)\cup(-1,1)\cup(1,\infty)</m>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            In this class, we do not deal with imaginary numbers, and imaginary numbers show up when we take square roots of negative numbers, so we want <m>4-x^2\geq0</m>. Equivalently, we want <m>4\geq x^2</m>. This happens only when <m>-2\leq x \leq 2</m>. Therefore, written in interval notation, the domain is <m>[-2,2]</m>.
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </solution>
+    </example>
+
+    <p>
+        The next thing that I want to discuss are the intercepts of a function, and there are a few reasons to want to know about these things, but first, let's define them.
+    </p>
+    
+    <definition xml:id="def-intercepts">
+        <statement>
+            <p>
+                Given a function defined by <m>y=f(x)</m>,
+                <ol>
+                    <li>
+                        <p>
+                            The <term><m>x</m>-intercepts</term> are the real solutions to the equation
+                            <md>
+                                <mrow>f(x) \amp =0.</mrow>
+                            </md>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            The <term><m>y</m>-intercept</term> is given by <m>f(0).</m>
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </statement>
+    </definition>
+
+    <p>
+        There's the definition, so why do we care about intercepts? Well, everyone might have a different reason, but here are a few:
+        <ol>
+            <li>
+                <p>
+                    Often in mathematics, interesting things happen to equations when we let one or many variables equal <m>0</m>, and, by definition, the intercepts are found by letting <m>x</m> or <m>y</m> be equal to <m>0</m>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    In calculus, a plethora of interesting problems can be solved by finding the intercepts of the derivative of a function.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Currently, we are developing skills so that if we are given some function, we will be able to graph that function very accurately without relying on technology, which is extremely cool!
+                </p>
+            </li>
+        </ol>
+    </p>
+
+    <p>
+        Hopefully I have given you some reason to care about intercepts, so now let's try finding some intercepts.
+    </p>
+
+    <example>
+        <statement>
+            <p>
+                Find the <m>x</m> and <m>y</m>-intercepts of the function defined by <m>f(x)=|2x|=10</m>.
+            </p>
+        </statement>
+        <answer>
+            <p>
+                The <m>x</m>-intercepts are <m>x=\pm5</m>, and the <m>y</m>-intercept is <m>y=-10</m>.
+            </p>
+        </answer>
+        <solution>
+            <p>
+                To solve this problem, we will just use the definitions above. The <m>x</m>-intercepts are the real solutions to <m>f(x)=|2x|-10=0</m>. Rearranging, we get <m>|2x|=10</m>.An <q>obvious</q> solution to this equation is <m>x=5</m>, but a less obvious solution is <m>x=-5</m>. Indeed, <m>|2(-5)|=|-10|=10</m>. Really, we want the solutions to <m>2x=10</m> and <m>-2x=10</m>. Don't forget to think about this when absolute values are involved! Thus, the <m>x</m>-intercepts are <m>x=\pm 5</m>.
+            </p>
+            <p>
+                By definition, the <m>y</m>-intercept is given by <m>f(0)</m>, so we compute:
+                <md>
+                    <mrow> f(0)\amp=|2(0)|-10 </mrow>
+                    <mrow> \amp =0-10</mrow>
+                    <mrow> \amp =-10,</mrow>
+                </md>
+                so the <m>y</m>intercept is <m>-10</m>.
+            </p>
+        </solution>
+    </example>
+
+    <example>
+        <statement>
+            <p>
+                Find the <m>x</m> and <m>y</m>-intercepts of the graph of <m>f(x)=2x^3-4x^2.</m>
+            </p>
+        </statement>
+        <answer>
+            <p>
+                The <m>x</m>-intercepts are <m>x=0</m> and <m>x=2</m>. The <m>y</m>-intercept is <m>y=0</m>.
+            </p>
+        </answer>
+        <solution>
+            <p>
+                To find the <m>x</m>-intercepts, we need to solve the equation <m>2x^3-4x^2=0</m>. We can do this by first factoring <m>x^2</m> from the left side of the equation, which yields <m>x^2(2x-4)=0</m>. Why does this make our lives easier? If <m>x^2(2x-4)=0</m>, then either <m>x^2=0</m> or <m>2x-4=0</m>, and we can solve each of these equations individually. If <m>x^2=0</m>, then <m>x=0</m>, and if <m>2x-4=0</m>, then <m>x=2</m>.
+            </p>
+            <p>
+                The <m>y</m>-intercept is given by <m>f(0)</m>, so
+                <md>
+                    <mrow>f(0) \amp =2(0)^3-4(0)^2</mrow>
+                    <mrow> \amp 0-0</mrow>
+                    <mrow> \amp =0</mrow>,
+                </md>
+                so the <m>y</m>-intercept is <m>y=0</m>.
+            </p>
+        </solution>
+    </example>
 </section>
