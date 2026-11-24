@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec3-linear-equations-in-two-variables">
+    <title>Linear Equations in Two Variables and Linear Functions</title>
+    <p>
+        Consider the following graph:
+    </p>
+    
+    <figure>
+        <image>
+            <latex-image>
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        xtick = {1,2,3,4,5,6,7,8,9,10},
+                        ytick = {50,60,70,80,90,100},
+                        xmin = -0.2, xmax = 10,
+                        ymin = 48, ymax = 100,
+                        axis x line = center,
+                        axis y line = center,
+                        xlabel style={anchor=west, at={(ticklabel* cs:1.05)}},
+                        ylabel style={anchor=south, at={(ticklabel* cs:1.0)}},
+                        xlabel={{$t$} (hours of studying)},
+                        ylabel={{$G(t)$} (test 1 score in Biology 101)},
+                        axis line style = {black, thick},
+                        grid=both,
+                        disabledatascaling
+                    ]
+                        %Function plot
+                        \addplot[domain=0:7,ultra thick,->] {5*x+50};
+                        %graph label
+                        \draw (2,80) node[rectangle,fill=white,text=black] {$y=G(t)$};
+                        \draw[fill=black,ultra thick] (0,50) circle[radius=2pt];
+                    \end{axis}
+                \end{tikzpicture}
+            </latex-image>
+        </image>
+    </figure>
+
+    <p>
+        The graph above demonstrate a relationship between the amount of time (in hours) that a person spends studying and their Test 1 score in Biology <m>101</m>. It looks like the students grade increases by <m>10</m> for every two hours that they spend studying.
+    </p>
+
+    <definition xml:id="def-standard-form">
+        <statement>
+            <p>
+                Let <m>A</m>, <m>B</m>, and <m>C</m> represent real numbers such that <m>A</m> and <m>B</m> are not both zero. A <term>linear equation</term> in variables <m>x</m> and <m>y</m> is an equation that can be written in the form:
+                <md>
+                    <mrow>Ax+by=C </mrow>
+                </md>
+                This is called the <term>standard form</term> of an equation of a line.
+            </p>
+        </statement>
+    </definition>
+
+    <p>
+        Generally, the domain and range of a linear function are both <m>(-\infty,\infty)</m>. There are some special cases, which we will cover, in which either the domain or the range is just a single value.
+    </p>
+
+    <example xml:id="ex-linear-equations">
+        <statement>
+            <p>
+                Consider the following lines. For each line given, identify the domain, the <m>x</m>-intercept, the <m>y</m>-intercept, and graph the line.
+                <ol>
+                    <li>
+                        <p>
+                            <m>5x+2y=18</m>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>7x=-14</m>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>3y=15</m>
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </statement>
+        <solution>
+            <p>
+                <ol>
+                    <li>
+                        <p>
+                            Recall from <xref ref="sec2-functions-and-relations"/> that we can find any <m>x</m>-intercepts by letting <m>y=0</m>, and we can find the <m>y</m>-intercept by letting <m>x=0</m>, so we will do just that:
+                            <md>
+                                <mrow>5x+2(0) \amp =18</mrow>
+                                <mrow>5x \amp =18</mrow>
+                                <mrow>x \amp =\frac{18}{5},</mrow>
+                            </md>
+                            so the <m>x</m>-intercept is at the point <m>(\frac{18}{5},0)</m>. Now we find the <m>y</m>-intercept:
+                            <md>
+                                <mrow>5(0)+2y \amp =18</mrow>
+                                <mrow>2y \amp =18</mrow>
+                                <mrow>y \amp =9,</mrow>
+                            </md>
+                            so the <m>y</m>-intercept is at the point <m>(0,9)</m>.
+                        </p>
+                        <p>
+                            All that is left is to graph the line, and to do that we can plot the two intercepts which we have found, and then we draw a straight line between them:
+                        </p>
+                        <figure>
+                            <image>
+                                <latex-image>
+                                    \begin{tikzpicture}
+                                        \draw[latex-latex, thin, draw=black] (-5,0)--(5,0) node [right] {$x$-axis};
+                                        \draw[latex-latex, thin, draw=black] (0,-5)--(0,5) node [above] {$y$-axis};
+                                        \draw [dotted, black] (-5,-5) grid (5,5);
+                                        \filldraw[black] (0,0) circle(3pt);
+                                        \draw[latex-latex, thick, draw=blue] (1.6,5) -- (5,-3.5)
+                                    node[pos=.55, above right] {$5x+2y=18$};
+                                    \end{tikzpicture}
+                                </latex-image>
+                            </image>
+                        </figure>
+                    </li>
+                    <li>
+                        <p>
+                            We find the <m>x</m>-intercepts by letting <m>y=0</m> and solve for <m>x</m>. Since there is no <m>y</m> in this equation, we simply solve for <m>x</m> to get <m>x=-2</m>. This tells us that for every value of <m>y</m>, <m>x=-2</m>. Thus, the graph of this equation will simply be a vertical line intersecting the point <m>(-2,0)</m>:
+                        </p>
+                        <figure>
+                            <image>
+                                <latex-image>
+                                    \begin{tikzpicture}
+                                        \draw[latex-latex, thin, draw=black] (-5,0)--(5,0) node [right] {$x$-axis};
+                                        \draw[latex-latex, thin, draw=black] (0,-5)--(0,5) node [above] {$y$-axis};
+                                        \draw [dotted, black] (-5,-5) grid (5,5);
+                                        \filldraw[black] (0,0) circle(3pt);
+                                        \draw[latex-latex, thick, draw=blue] (-2,-5) -- (-2,5)
+                                        node[pos=.55, above right] {$7x=-14$};
+                                    \end{tikzpicture}
+                                </latex-image>
+                            </image>
+                        </figure>
+                    </li>
+                    <li>
+                        <p>
+                            As above, except now we don't have the variable <m>x</m>, we can just solve for <m>y</m> to get <m>y=5</m>. Thus, the graph of this equation will simply be the line horizontal line intersecting the point <m>(0,5)</m>:
+                        </p>
+                        <figure>
+                            <image>
+                                <latex-image>
+                                    \begin{tikzpicture}
+                                        \draw[latex-latex, thin, draw=black] (-5,0)--(5,0) node [right] {$x$-axis};
+                                        \draw[latex-latex, thin, draw=black] (0,-5)--(0,5) node [above] {$y$-axis};
+                                        \draw [dotted, black] (-5,-5) grid (5,5);
+                                        \filldraw[black] (0,0) circle(3pt);
+                                        \draw[latex-latex, thick, draw=blue] (-5,5) -- (5,5)
+                                        node[pos=.55, below right] {$3y=15$};
+                                    \end{tikzpicture}
+                                </latex-image>
+                            </image>
+                        </figure>
+                    </li>
+                </ol>
+            </p>
+        </solution>
+    </example>
+
+    <p>
+        In the previous example, we encountered the special cases that I mentioned at the beginning of this section. Let's define those special cases now.
+    </p>
+
+    <definition xml:id="def-vertical-horizontal-lines">
+        <statement>
+            <p>
+                A <term>vertical line</term> is one of the form <m>x=a</m> for some real number <m>a</m>.
+            </p>
+            <p>
+                A <term>horizontal line</term> is one of the form <m>y=b</m> for some real number <m>b</m>.
+            </p>
+        </statement>
+    </definition>
+
+    <p>
+        At the beginning of this section, we looked at a graph and noticed that the students grade increased by <m>10</m> for every <m>2</m> hours that they spent studying. Equivalently, the students grade increased by <m>5</m> for every hour that they spent studying.
+    </p>
+    <p>
+        Given a linear equation, the ratio of changes in <m>y</m> compared to changes in <m>x</m> is known as the <term>slope</term> of the line.
+    </p>
+
+    <definition xml:id="def-slope">
+        <statement>
+            <p>
+                The <term>slope</term> of a <em>non-vertical</em> line is the number of units the line rises (or falls) vertically for each unit of horizontal change from left to right.
+            </p>
+
+            <p>
+                The slope of the line passing through the distinct points <m>(x_1,y_1)</m> and <m>(x_2,y_2)</m> is 
+                <md>
+                    <mrow> m=\frac{\Delta y}{\Delta x}=\frac{y_2-y_1}{x_2-x_1}. </mrow>
+                </md>
+            </p>
+        </statement>
+    </definition>
+
+    <p>
+        Something you might be wondering about is why <q>non-vertical</q> is emphasized in Definition <xref ref="def-slope"/>. If we have a vertical line, we say that the slope is undefined since there is no horizontal change.
+    </p>
+
+    <p>
+        Something we can already think about is what a line with positive, negative, or zero slope looks like. In Example <xref ref="ex-linear-equations"/>, we can see that a line with positive slope rises from left to right. On the other, a slope with negative slope falls from left to right. Additionally, a line with zero slope is a horizontal line.
+    </p>
+
+    <p>
+        Let's see an example of computing slope now.
+    </p>
+
+    <example>
+        <statement>
+            <p>
+                Find the slope of the line between the points <m>(-1,12)</m> and <m>(4,2)</m>.
+            </p>
+        </statement>
+
+        <answer>
+            <p>
+                The slope is <m>m=-2</m>.
+            </p>
+        </answer>
+
+        <solution>
+            <p>
+                The slope of the line between the points <m>(-1,12)</m> and <m>(4,2)</m> is
+                <md>
+                    <mrow>m \amp =\frac{2-12}{4-(-1)}</mrow>
+                    <mrow> \amp =\frac{-10}{5}</mrow>
+                    <mrow> \amp =-2</mrow>.
+                </md>
+            </p>
+        </solution>
+    </example>
+</section>
